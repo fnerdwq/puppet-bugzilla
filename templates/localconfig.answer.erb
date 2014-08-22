@@ -1,0 +1,20 @@
+$answer{'ADMIN_EMAIL'} = '<%= @admin_email -%>';
+$answer{'ADMIN_PASSWORD'} = '<%= @admin_password -%>';
+$answer{'ADMIN_REALNAME'} = '<%= @admin_realname -%>';
+
+$answer{'NO_PAUSE'} = 1;
+
+$answer{'urlbase'} = '<%= @urlbase -%>';
+$answer{'ssl_redirect'} = '<%= @ssl_redirect -%>';
+$answer{'sslbase'} = '<%= @sslbase -%>';
+$answer{'cookiepath'} = '<%= @cookiepath -%>';
+
+<% @config_hash.each do |key,val| -%>
+<%   _val = case val
+      when ('On' or 1 or true) then '1'
+      when ('Off' or 0 or false) then '0'
+      else val
+    end -%>
+$answer{'<%= key -%>'} = '<%= _val -%>';
+<% end -%>
+
