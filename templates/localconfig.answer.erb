@@ -5,7 +5,12 @@ $answer{'ADMIN_REALNAME'} = '<%= @admin_realname -%>';
 $answer{'NO_PAUSE'} = 1;
 
 $answer{'urlbase'} = '<%= @urlbase -%>';
-$answer{'ssl_redirect'} = '<%= @ssl_redirect -%>';
+<%   _ssl_redirect = case @ssl_redirect
+      when ('On' or 1 or true) then '1'
+      when ('Off' or 0 or false) then '0'
+      else @ssl_redirect
+    end -%>
+$answer{'ssl_redirect'} = '<%= _ssl_redirect -%>';
 $answer{'sslbase'} = '<%= @sslbase -%>';
 $answer{'cookiepath'} = '<%= @cookiepath -%>';
 
